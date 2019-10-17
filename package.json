@@ -12,10 +12,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --watchAll",
-    "test:coverage": "jest --coverage",
-    "eject": "react-scripts eject"
-   
+    "eject": "react-scripts eject",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,7 +32,6 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.1.2",
-    "@testing-library/react": "^9.3.0",
-    "jest": "^24.9.0"
+    "@testing-library/react": "^9.3.0"
   }
 }

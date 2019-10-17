@@ -9,23 +9,7 @@ class Search extends Component {
     search: ''
   };
 
-  retriveRenderCountry = country => {
-    var code = country.code.toLowerCase();
-    return (
-      <React.Fragment>
-        <div className='col-md-12'>
-          <Card className='mt-4'>
-            <CardContent>
-              <Typography color='textSecondary' gutterBottom>
-                {country.name}
-              </Typography>
-            </CardContent>
-          </Card>
-        </div>
-      </React.Fragment>
-    );
-  };
-
+  
   onChange = e => {
     this.setState({ search: e.target.value });
   };
@@ -35,17 +19,31 @@ class Search extends Component {
     const filterCountries = CountriesList.filter(item => {
       return item.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
+    console.log(filterCountries)
     return (
       <div>
         <div className='container'>
           <div className='row mt-4'>
-            <div className='col-md-12'>
-              <input className='form-control' icon='search' onChange={this.onChange} />
+            <div className='col-md-6'>
+              <label htmlFor="search">Search</label>
+            </div>
+            <div className='col-md-6'>
+              <input className='form-control' icon='search' id="search" placeholder="Search..." onChange={this.onChange} />
             </div>
           </div>
           <div className='row mt-4'>
-            {filterCountries.map(country => {
-              return this.retriveRenderCountry(country);
+            {filterCountries.map((country,idx) => {
+              return(
+                <div className='col-md-12' key={idx}>
+                  <Card className='mt-4'>
+                    <CardContent>
+                      <Typography color='textSecondary' gutterBottom>
+                        {country.name}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </div>
+              )
             })}
           </div>
         </div>
