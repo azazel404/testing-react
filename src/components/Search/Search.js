@@ -11,7 +11,7 @@ class Search extends Component {
 
   
   onChange = e => {
-    this.setState({ search: e.target.value });
+    this.setState({ search: e.target.value.toLowerCase() });
   };
 
   render() {
@@ -19,31 +19,38 @@ class Search extends Component {
     const filterCountries = CountriesList.filter(item => {
       return item.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
-    console.log(filterCountries)
+
     return (
       <div>
-        <div className='container'>
-          <div className='row mt-4'>
-            <div className='col-md-6'>
+        <div className="container">
+          <div className="row mt-4">
+            <div className="col-md-6">
               <label htmlFor="search">Search</label>
             </div>
-            <div className='col-md-6'>
-              <input className='form-control' icon='search' id="search" placeholder="Search..." onChange={this.onChange} />
+            <div className="col-md-6">
+              <input
+                className="form-control"
+                icon="search"
+                id="search"
+                value={this.state.search}
+                placeholder="Search..."
+                onChange={this.onChange}
+              />
             </div>
           </div>
-          <div className='row mt-4'>
-            {filterCountries.map((country,idx) => {
-              return(
-                <div className='col-md-12' key={idx}>
-                  <Card className='mt-4'>
+          <div className="row mt-4">
+            {filterCountries.map((country, idx) => {
+              return (
+                <div className="col-md-12" key={idx}>
+                  <Card className="mt-4">
                     <CardContent>
-                      <Typography color='textSecondary' gutterBottom>
+                      <Typography color="textSecondary" gutterBottom>
                         {country.name}
                       </Typography>
                     </CardContent>
                   </Card>
                 </div>
-              )
+              );
             })}
           </div>
         </div>

@@ -25,6 +25,7 @@ exports[`SearchLayout renders the component 1`] = `
           icon="search"
           id="search"
           placeholder="Search..."
+          value=""
         />
       </div>
     </div>
